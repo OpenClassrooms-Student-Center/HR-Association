@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Employee Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+}
+
+.special {
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href=".">Système de gestion des
+					employées</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+
+		<h2 class="h2">Modification d'un employée</h2>
+		<div>
+			<form method="post"
+				th:action="@{/saveEmployee}" th:object="${employee}">
+				<div class="form-group">
+					<input
+						type="hidden" th:field="*{id}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="firstNameInput">Prénom</label> 
+					<input
+						type="text" th:field="*{firstName}" class="form-control" id="firstNameInput"
+						aria-describedby="firstNameHelp" placeholder="Saisir le prénom"> <small
+						id="firstNameHelp" class="form-text text-muted">Merci d'écrire le prénom de l'employée.</small>
+				</div>
+				<div class="form-group">
+					<label for="lastNameInput">Prénom</label> 
+					<input
+						type="text" th:field="*{lastName}" class="form-control" id=""lastNameInput""
+						aria-describedby="lastNameHelp" placeholder="Saisir le prénom"> <small
+						id="lastNameHelp" class="form-text text-muted">Merci d'écrire le nom de l'employée.</small>
+				</div>
+				<div class="form-group">
+					<label for="mailInput">Email</label> 
+					<input
+						type="text" th:field="*{mail}" class="form-control" id="mailInput"
+						aria-describedby="mailHelp" placeholder="Saisir l'adresse email"> <small
+						id="mailHelp" class="form-text text-muted">Merci d'écrire l'adresse email de l'employée.</small>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Modifier</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

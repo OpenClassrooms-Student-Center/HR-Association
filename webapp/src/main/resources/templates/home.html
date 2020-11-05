@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Employee Web Application</title>
+
+<style>
+	body {
+		padding-top: 50px;
+	}
+	.special {
+		padding-top:50px;
+	}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href=".">Système de gestion des employées</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+		<h2 class="h2">Liste des employées</h2>
+		<div class="table-responsive">
+			<table class="table table-striped table-sm">
+				<thead>
+					<tr>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${employees.empty}">
+						<td colspan="3">Aucun employée en base de données</td>
+					</tr>
+					<tr th:each="employee: ${employees}">
+						<td><span th:text="${employee.firstName}"> Prénom </span></td>
+						<td><span th:text="${employee.lastName}"> Nom </span></td>
+						<td>
+							<a th:href="@{/updateEmployee/{id}(id=${employee.id})}"><button class="btn btn-info">Modifier</button></a>
+							<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"><button class="btn btn-danger">Supprimer</button></a>						
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h4><a th:href="@{/createEmployee}">Ajouter un nouvel employée</a></h4>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>
